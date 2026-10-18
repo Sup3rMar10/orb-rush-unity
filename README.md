@@ -66,7 +66,7 @@ It prints `52 passed, 0 failed` and exits non-zero on any failure. CI runs the s
 7. **Compiled the Unity layer against stubs** with four combinations of `ENABLE_LEGACY_INPUT_MANAGER` / `ENABLE_INPUT_SYSTEM`. All compiled. (Caveat above: this proves my code is self-consistent, not that the Unity API usage is right.)
 8. **Wrote the editor build script and workflows**, and checked that the action tags used (`checkout@v7`, `setup-dotnet@v6`, `cache@v6`, `upload-artifact@v7`, `game-ci/unity-builder@v6`) exist.
 9. **Hit and fixed along the way:** Git Bash rewrote `csc`'s `/out:` flags as paths (switched to PowerShell and `-flag` style); `.gitignore`'s usual `*.csproj` rule would have excluded the test project (anchored to the project root); game-ci passes its own output folder, so the build script now honours `-customBuildPath`.
-10. **Pushed to GitHub** and checked the CI run (result below).
+10. **Pushed to GitHub** and checked CI: the logic-test job (`dotnet run` on .NET 8, warnings as errors) passed on the first run. That run covers only `Core` and its tests, not the Unity scripts.
 
 ## Known gaps
 
